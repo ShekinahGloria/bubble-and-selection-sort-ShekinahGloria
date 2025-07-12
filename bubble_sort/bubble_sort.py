@@ -1,28 +1,22 @@
 def bubble_sort(unsorted_list):
     """
-    Sorts a list of elements in ascending order using the Bubble Sort algorithm.
-    The sorting is done in-place.
-
-    Parameters:
-        unsorted_list (list): The list of elements to sort.
-
-    Returns:
-        None
+    Returns a new list that is sorted in ascending order using Bubble Sort.
     """
-    n = len(unsorted_list)
+    lst = unsorted_list.copy()  # to avoid modifying original
+    n = len(lst)
     for i in range(n):
         swapped = False
         for j in range(0, n - i - 1):
-            if unsorted_list[j] > unsorted_list[j + 1]:
-                unsorted_list[j], unsorted_list[j + 1] = unsorted_list[j + 1], unsorted_list[j]
+            if lst[j] > lst[j + 1]:
+                lst[j], lst[j + 1] = lst[j + 1], lst[j]
                 swapped = True
         if not swapped:
             break
+    return lst
 
 
 if __name__ == "__main__":
     # Example usage
-    arr = [64, 34, 25, 12, 22, 11, 90]
+    arr = [54, 28, 45, 62, 31, 18, 98]
     print("Original list:", arr)
-    bubble_sort(arr)
-    print("Sorted list:", arr)
+    print("Sorted list:", bubble_sort(arr))
